@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="YT Tracker"/>
 <meta name="theme-color" content="#07090f"/>
-<title>YT Automation Tracker</title>
 <link rel="manifest" id="pwa-manifest"/>
+<title>YT Automation Tracker</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
@@ -17,170 +17,164 @@
   --green:#10b981;--amber:#f59e0b;--purple:#818cf8;--red:#ef4444;--pink:#ec4899;--blue:#38bdf8;
   --text:#f1f5f9;--muted:#64748b;--subtle:#94a3b8;
 }
-body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:80px}
-input,textarea,select{font-family:inherit;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:14px;width:100%;outline:none;transition:border-color .15s;-webkit-appearance:none}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:76px}
+input,textarea,select{font-family:inherit;color:var(--text);background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 11px;font-size:14px;width:100%;outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none}
 input:focus,textarea:focus,select:focus{border-color:var(--green)}
-button{font-family:inherit;cursor:pointer;border:none;border-radius:8px;font-weight:600;transition:all .15s;-webkit-tap-highlight-color:transparent}
-button:active{transform:scale(0.97)}
+button{font-family:inherit;cursor:pointer;border:none;border-radius:8px;font-weight:600;transition:all .15s}
+button:active{transform:scale(0.96)}
 .btn-green{background:var(--green);color:#fff;padding:10px 18px;font-size:14px}
 .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);padding:9px 14px;font-size:13px}
 .btn-dark{background:var(--card);color:var(--subtle);padding:10px 18px;font-size:14px;border:1px solid var(--border)}
 
-/* HEADER */
-header{background:linear-gradient(135deg,#0d1117 0%,#13111f 100%);border-bottom:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.logo{font-size:17px;font-weight:800;letter-spacing:-.5px}
+header{background:linear-gradient(135deg,#0d1117 0%,#13111f 100%);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.logo{font-size:16px;font-weight:800;letter-spacing:-.5px}
 .logo span{color:var(--green)}
-.logo-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.logo-sub{font-size:10px;color:var(--muted);margin-top:2px}
 
-/* BOTTOM NAV */
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#0d1117;border-top:1px solid var(--border);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 4px 8px;background:transparent;border:none;border-radius:0;color:var(--muted);font-size:10px;font-weight:600;gap:4px;transition:color .15s}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 6px;background:transparent;border:none;border-radius:0;color:var(--muted);font-size:10px;font-weight:600;gap:3px}
 .nav-btn.active{color:var(--green)}
 .nav-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* LAYOUT */
-main{max-width:860px;margin:0 auto;padding:20px 14px}
-
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px}
-.card-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+main{max-width:860px;margin:0 auto;padding:16px 14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:7px}
 
 /* STAT GRID */
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.stat-card{background:var(--card);border-radius:12px;padding:16px}
-.stat-val{font-size:24px;font-weight:800;margin-bottom:3px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.stat-card{background:var(--card);border-radius:12px;padding:14px 16px}
+.stat-val{font-size:22px;font-weight:800;margin-bottom:2px}
 .stat-label{font-size:11px;color:var(--muted)}
 
 /* WEEKLY ANALYTICS */
-.weekly-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.weekly-item{background:var(--bg);border-radius:8px;padding:12px}
-.weekly-item-label{font-size:11px;color:var(--muted);margin-bottom:4px}
-.weekly-item-val{font-size:18px;font-weight:700}
-.niche-meter{margin-top:14px}
-.niche-bar-wrap{height:8px;background:var(--border);border-radius:99px;margin:6px 0 4px;overflow:hidden}
-.niche-bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
-.niche-label{font-size:11px;color:var(--muted)}
-.niche-verdict{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600}
+.week-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.week-title{font-size:14px;font-weight:700}
+.week-sub{font-size:11px;color:var(--muted)}
+.weekly-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.wi{background:var(--bg);border-radius:8px;padding:10px 12px}
+.wi-label{font-size:10px;color:var(--muted);margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.wi-val{font-size:16px;font-weight:800}
+
+/* NICHE METER */
+.niche-section{border-top:1px solid var(--border);padding-top:12px;margin-top:4px}
+.bar-wrap{height:7px;background:var(--border);border-radius:99px;margin:5px 0 3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.bar-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.bar-name{font-size:11px;color:var(--muted)}
+.bar-val{font-size:12px;font-weight:700}
+.bar-hint{font-size:10px;color:var(--muted);margin-bottom:8px}
+.verdict{margin-top:10px;padding:10px 12px;border-radius:8px;font-size:12px;font-weight:600;line-height:1.5}
 
 /* VIDEO ROW */
-.video-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:8px;cursor:pointer;transition:border-color .15s;-webkit-tap-highlight-color:transparent}
+.video-row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:8px;cursor:pointer;transition:border-color .15s}
 .video-row:active{border-color:var(--green)}
 .progress-bar{height:4px;background:var(--border);border-radius:99px;flex:1}
 .progress-fill{height:100%;border-radius:99px;transition:width .3s}
-.badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap}
 
 /* CHECKLIST */
-.check-row{display:flex;align-items:center;justify-content:space-between;padding:11px 12px;background:var(--bg);border-radius:8px;margin-bottom:6px;gap:10px}
-.check-label{font-size:14px;color:var(--text);flex:1;line-height:1.3}
-.check-box{width:30px;height:30px;border-radius:7px;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:all .15s}
+.check-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg);border-radius:8px;margin-bottom:5px;gap:10px}
+.check-label{font-size:13px;color:var(--text);flex:1;line-height:1.3}
+.check-box{width:28px;height:28px;border-radius:6px;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:all .15s}
 .check-box.checked{background:var(--green);border-color:var(--green);color:#fff}
-.yn-btn{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:700;text-transform:uppercase;border:2px solid var(--border);background:transparent;color:var(--muted);transition:all .15s}
-.yn-btn.yes-active{border-color:var(--green);background:#10b98120;color:var(--green)}
-.yn-btn.no-active{border-color:var(--red);background:#ef444420;color:var(--red)}
-.custom-tag{font-size:10px;color:var(--amber);background:#f59e0b15;border:1px solid #f59e0b30;padding:2px 7px;border-radius:4px;flex-shrink:0}
-.del-item{width:24px;height:24px;border-radius:5px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
+.yn-btn{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;border:2px solid var(--border);background:transparent;color:var(--muted);transition:all .15s}
+.yn-yes.active{border-color:var(--green);background:#10b98120;color:var(--green)}
+.yn-no.active{border-color:var(--red);background:#ef444420;color:var(--red)}
+.custom-tag{font-size:9px;color:var(--amber);background:#f59e0b12;border:1px solid #f59e0b30;padding:2px 6px;border-radius:4px;flex-shrink:0}
+.del-item{width:22px;height:22px;border-radius:5px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 .del-item:active{border-color:var(--red);color:var(--red)}
 
-/* ADD CUSTOM */
-.add-item-form{background:var(--bg);border:1px dashed #f59e0b40;border-radius:10px;padding:14px;margin-top:10px}
-.type-toggle{display:flex;gap:8px;margin-bottom:12px}
-.type-btn{flex:1;padding:8px;border-radius:7px;font-size:13px;font-weight:700;border:2px solid var(--border);background:var(--card);color:var(--muted);transition:all .15s}
-.type-btn.active-check{border-color:var(--green);background:#10b98120;color:var(--green)}
-.type-btn.active-yn{border-color:var(--purple);background:#818cf820;color:var(--purple)}
+/* CUSTOM ITEM FORM */
+.add-form{background:var(--bg);border:1px dashed #f59e0b35;border-radius:10px;padding:13px;margin-top:10px}
+.add-form-title{font-size:12px;font-weight:700;color:var(--amber);margin-bottom:10px}
+.type-toggle{display:flex;gap:8px;margin-bottom:10px}
+.type-btn{flex:1;padding:7px;border-radius:7px;font-size:12px;font-weight:700;border:2px solid var(--border);background:var(--card);color:var(--muted)}
+.type-btn.tc{border-color:var(--green);background:#10b98118;color:var(--green)}
+.type-btn.ty{border-color:var(--purple);background:#818cf818;color:var(--purple)}
 
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;background:#000c;display:flex;align-items:flex-end;justify-content:center;z-index:200;padding:0}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px 18px 0 0;padding:24px 20px 32px;width:100%;max-width:520px;max-height:85vh;overflow-y:auto}
-.modal h3{font-size:16px;font-weight:700;margin-bottom:16px}
-.modal-handle{width:36px;height:4px;background:var(--border);border-radius:99px;margin:0 auto 18px}
-
-/* TOAST */
-#toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
-#toast.show{opacity:1}
-#toast.error{background:var(--red)}
-
-/* METRICS */
-.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:420px){.metrics-grid{grid-template-columns:1fr}}
-.field-label{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-
-/* TOPIC */
-.topic-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-
-/* EMPTY */
-.empty{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center;color:var(--muted);font-size:14px}
+.modal-overlay{position:fixed;inset:0;background:#000c;display:flex;align-items:flex-end;justify-content:center;z-index:200}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px 18px 0 0;padding:20px 18px 32px;width:100%;max-width:520px;max-height:85vh;overflow-y:auto}
+.modal h3{font-size:15px;font-weight:700;margin-bottom:14px}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:99px;margin:0 auto 16px}
 
 /* INSTALL BANNER */
-#install-banner{display:none;background:linear-gradient(90deg,#10b98120,#818cf820);border:1px solid var(--green);border-radius:10px;padding:12px 14px;margin-bottom:14px;align-items:center;gap:12px}
-#install-banner.show{display:flex}
+.install-banner{display:none;background:linear-gradient(90deg,#10b98112,#818cf812);border:1px solid #10b98140;border-radius:10px;padding:12px 14px;margin-bottom:12px;align-items:center;gap:12px}
+.install-banner.show{display:flex}
 
+#toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:8px 20px;border-radius:99px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1}
+#toast.err{background:var(--red)}
+
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field-label{font-size:10px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.topic-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.empty{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:36px;text-align:center;color:var(--muted);font-size:13px}
+.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
 .page{display:none}.page.active{display:block}
-.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.divider{height:1px;background:var(--border);margin:14px 0}
 </style>
 </head>
 <body>
-
 <div id="toast"></div>
 
-<!-- INSTALL BANNER -->
-<div id="install-banner">
-  <div style="flex:1">
-    <div style="font-size:13px;font-weight:700;color:var(--green)">Install as App</div>
-    <div style="font-size:12px;color:var(--muted);margin-top:2px">Tap to add to your home screen</div>
-  </div>
-  <button class="btn-green" style="padding:8px 14px;font-size:13px;flex-shrink:0" onclick="installApp()">Install</button>
-  <button class="btn-ghost" style="padding:8px 10px;font-size:13px;flex-shrink:0" onclick="document.getElementById('install-banner').classList.remove('show')">✕</button>
-</div>
-
-<!-- HEADER -->
 <header>
   <div>
     <div class="logo"><span>●</span> YT Tracker</div>
-    <div class="logo-sub">Health After 40 · Faceless</div>
+    <div class="logo-sub" id="week-label">Health After 40 · Faceless</div>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
-    <div id="header-week" style="font-size:12px;color:var(--muted)"></div>
-  </div>
+  <div id="hdr-right" style="font-size:11px;color:var(--muted);text-align:right"></div>
 </header>
 
 <main>
 
 <!-- DASHBOARD -->
 <div id="tab-dashboard" class="page active">
-  <div id="install-banner-slot"></div>
-  <div style="font-size:20px;font-weight:800;margin-bottom:16px">Dashboard</div>
+
+  <div class="install-banner" id="install-banner">
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:700;color:var(--green)">📲 Install as App</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:1px">Tap Install → Add to Home Screen</div>
+    </div>
+    <button class="btn-green" style="padding:7px 13px;font-size:12px;flex-shrink:0" onclick="doInstall()">Install</button>
+    <button class="btn-ghost" style="padding:7px 9px;font-size:13px;flex-shrink:0" onclick="this.closest('.install-banner').classList.remove('show')">✕</button>
+  </div>
+
   <div class="stat-grid" id="stat-grid"></div>
 
-  <!-- WEEKLY ANALYTICS -->
+  <!-- WEEKLY ANALYTICS CARD -->
   <div class="card">
-    <div class="card-title">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Weekly Analytics
+    <div class="week-header">
+      <div>
+        <div class="week-title">📊 Weekly Analytics</div>
+        <div class="week-sub" id="week-range">—</div>
+      </div>
+      <div id="week-count" style="font-size:20px;font-weight:800;color:var(--green)">—</div>
     </div>
     <div class="weekly-grid" id="weekly-grid"></div>
 
     <!-- NICHE HEALTH METER -->
-    <div class="niche-meter">
-      <div class="divider"></div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text)">Niche Health Score</div>
-      <div id="niche-ctr-wrap">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:12px;color:var(--muted)">Avg CTR</div>
-          <div id="niche-ctr-val" style="font-size:12px;font-weight:700;color:var(--text)">—</div>
+    <div class="niche-section">
+      <div style="font-size:12px;font-weight:700;margin-bottom:10px;color:var(--text)">🎯 Niche Health Meter</div>
+
+      <div>
+        <div class="bar-meta">
+          <span class="bar-name">Avg CTR across all live videos</span>
+          <span class="bar-val" id="ctr-val" style="color:var(--amber)">—</span>
         </div>
-        <div class="niche-bar-wrap"><div id="niche-ctr-bar" class="niche-bar-fill" style="width:0%;background:var(--green)"></div></div>
-        <div class="niche-label">Target: &gt;4% · Good: &gt;6% · Excellent: &gt;8%</div>
+        <div class="bar-wrap"><div class="bar-fill" id="ctr-bar" style="width:0;background:var(--amber)"></div></div>
+        <div class="bar-hint">Below 4% = weak · 4–6% = okay · Above 6% = strong · Above 8% = excellent</div>
       </div>
-      <div style="margin-top:10px" id="niche-imp-wrap">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:12px;color:var(--muted)">Avg Impressions</div>
-          <div id="niche-imp-val" style="font-size:12px;font-weight:700;color:var(--text)">—</div>
+
+      <div>
+        <div class="bar-meta">
+          <span class="bar-name">Total impressions (all videos)</span>
+          <span class="bar-val" id="imp-val" style="color:var(--purple)">—</span>
         </div>
-        <div class="niche-bar-wrap"><div id="niche-imp-bar" class="niche-bar-fill" style="width:0%;background:var(--purple)"></div></div>
-        <div class="niche-label">More impressions = YouTube pushing your content</div>
+        <div class="bar-wrap"><div class="bar-fill" id="imp-bar" style="width:0;background:var(--purple)"></div></div>
+        <div class="bar-hint">Shows how much YouTube is pushing your content in this niche</div>
       </div>
-      <div id="niche-verdict" class="niche-verdict" style="display:none"></div>
+
+      <div id="verdict" style="display:none" class="verdict"></div>
     </div>
   </div>
 
@@ -188,51 +182,51 @@ main{max-width:860px;margin:0 auto;padding:20px 14px}
   <div class="card">
     <div class="card-title">Channel Numbers</div>
     <div class="metrics-grid">
-      <div><div class="field-label">Subscribers</div><input id="ch-subs" placeholder="0" oninput="saveChannelStat('subscribers',this.value)"/></div>
-      <div><div class="field-label">Total Views</div><input id="ch-views" placeholder="0" oninput="saveChannelStat('totalViews',this.value)"/></div>
-      <div><div class="field-label">Total Revenue ($)</div><input id="ch-rev" placeholder="0.00" oninput="saveChannelStat('totalRevenue',this.value)"/></div>
-      <div><div class="field-label">Monthly Goal ($)</div><input id="ch-goal" placeholder="1000" oninput="saveChannelStat('monthlyGoal',this.value)"/></div>
-      <div><div class="field-label">Total Impressions</div><input id="ch-imps" placeholder="0" oninput="saveChannelStat('totalImpressions',this.value)"/></div>
-      <div><div class="field-label">Channel Avg CTR (%)</div><input id="ch-ctr" placeholder="0.0" oninput="saveChannelStat('channelCTR',this.value)"/></div>
+      <div><div class="field-label">Subscribers</div><input id="ch-subs" placeholder="0" oninput="saveCS('subscribers',this.value)"/></div>
+      <div><div class="field-label">Total Views</div><input id="ch-views" placeholder="0" oninput="saveCS('totalViews',this.value)"/></div>
+      <div><div class="field-label">Total Impressions</div><input id="ch-imps" placeholder="0" oninput="saveCS('totalImpressions',this.value)"/></div>
+      <div><div class="field-label">Channel CTR (%)</div><input id="ch-ctr" placeholder="0.0" oninput="saveCS('channelCTR',this.value)"/></div>
+      <div><div class="field-label">Total Revenue ($)</div><input id="ch-rev" placeholder="0.00" oninput="saveCS('totalRevenue',this.value)"/></div>
+      <div><div class="field-label">Monthly Goal ($)</div><input id="ch-goal" placeholder="1000" oninput="saveCS('monthlyGoal',this.value)"/></div>
     </div>
   </div>
 
-  <div style="font-size:15px;font-weight:700;margin-bottom:10px">Recent Videos</div>
+  <div style="font-size:14px;font-weight:700;margin-bottom:10px">Recent Videos</div>
   <div id="dash-recent"></div>
 </div>
 
-<!-- VIDEOS LIST -->
+<!-- VIDEOS -->
 <div id="tab-videos" class="page">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
     <div style="font-size:20px;font-weight:800">Videos</div>
-    <button class="btn-green" onclick="openAddVideoModal()">+ Add</button>
+    <button class="btn-green" onclick="openAddModal()">+ Add</button>
   </div>
   <div id="videos-list"></div>
 </div>
 
-<!-- VIDEO DETAIL -->
+<!-- DETAIL -->
 <div id="tab-detail" class="page">
-  <button class="btn-ghost" style="margin-bottom:14px" onclick="goTab('videos')">← Back</button>
+  <button class="btn-ghost" style="margin-bottom:13px" onclick="goTab('videos')">← Back</button>
   <div id="detail-content"></div>
 </div>
 
 <!-- TOPICS -->
 <div id="tab-topics" class="page">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
     <div style="font-size:20px;font-weight:800">Topic Bank</div>
-    <button class="btn-dark" id="edit-topics-btn" onclick="toggleEditTopics()">Edit</button>
+    <button class="btn-dark" id="edit-btn" onclick="toggleEditTopics()">Edit</button>
   </div>
   <div id="topics-view"></div>
   <div id="topics-edit" style="display:none">
-    <div style="font-size:13px;color:var(--muted);margin-bottom:8px">One topic per line.</div>
-    <textarea id="topics-textarea" rows="18" style="line-height:1.7;resize:vertical"></textarea>
-    <button class="btn-green" style="margin-top:12px;width:100%" onclick="saveTopics()">Save Topics</button>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:7px">One topic per line. Edit freely.</div>
+    <textarea id="topics-ta" rows="18" style="line-height:1.7;resize:vertical"></textarea>
+    <button class="btn-green" style="margin-top:10px;width:100%" onclick="saveTopics()">Save Topics</button>
   </div>
 </div>
 
 <!-- STATS -->
 <div id="tab-stats" class="page">
-  <div style="font-size:20px;font-weight:800;margin-bottom:16px">Stats</div>
+  <div style="font-size:20px;font-weight:800;margin-bottom:14px">Stats</div>
   <div id="stats-content"></div>
 </div>
 
@@ -240,87 +234,85 @@ main{max-width:860px;margin:0 auto;padding:20px 14px}
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button class="nav-btn active" id="nav-dashboard" onclick="goTab('dashboard')">
-    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-    Dashboard
+  <button class="nav-btn active" id="nb-dashboard" onclick="goTab('dashboard')">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+    Home
   </button>
-  <button class="nav-btn" id="nav-videos" onclick="goTab('videos')">
+  <button class="nav-btn" id="nb-videos" onclick="goTab('videos')">
     <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
     Videos
   </button>
-  <button class="nav-btn" id="nav-topics" onclick="goTab('topics')">
+  <button class="nav-btn" id="nb-topics" onclick="goTab('topics')">
     <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     Topics
   </button>
-  <button class="nav-btn" id="nav-stats" onclick="goTab('stats')">
+  <button class="nav-btn" id="nb-stats" onclick="goTab('stats')">
     <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
     Stats
   </button>
 </nav>
 
 <!-- ADD VIDEO MODAL -->
-<div id="add-video-modal" class="modal-overlay" style="display:none" onclick="outsideModalClose(event)">
+<div id="add-modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeAddModal()">
   <div class="modal">
     <div class="modal-handle"></div>
     <h3>Add New Video</h3>
-    <div class="field-label" style="margin-bottom:6px">Video Title / Topic</div>
-    <textarea id="new-topic-input" rows="3" placeholder="e.g. 5 Foods That Destroy Memory After 50" style="margin-bottom:12px;resize:none"></textarea>
-    <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Or pick from topic bank:</div>
-    <div id="topic-picker" style="max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:16px"></div>
+    <div class="field-label" style="margin-bottom:5px">Video Title / Topic</div>
+    <textarea id="new-topic" rows="3" placeholder="e.g. 5 Foods That Destroy Memory After 50" style="margin-bottom:11px;resize:none"></textarea>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:7px">Or pick from topic bank:</div>
+    <div id="topic-picker" style="max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:14px"></div>
     <div style="display:flex;gap:10px">
-      <button class="btn-green" style="flex:1" onclick="confirmAddVideo()">Add Video</button>
-      <button class="btn-dark" style="flex:1" onclick="closeAddVideoModal()">Cancel</button>
+      <button class="btn-green" style="flex:1" onclick="confirmAdd()">Add Video</button>
+      <button class="btn-dark" style="flex:1" onclick="closeAddModal()">Cancel</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── PWA MANIFEST ─────────────────────────────────────────────────────────
-const manifestData = {
-  name:"YT Automation Tracker",
-  short_name:"YT Tracker",
-  description:"YouTube Automation tracker for Health After 40 channel",
-  start_url:".",
-  display:"standalone",
-  background_color:"#07090f",
-  theme_color:"#07090f",
-  orientation:"portrait",
+// ═══ PWA SETUP ═══════════════════════════════════════════════════════
+const ICON_SVG = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='28' fill='%2307090f'/><circle cx='96' cy='88' r='52' fill='%2310b981'/><polygon points='80,66 80,110 120,88' fill='white'/><rect x='52' y='148' width='88' height='10' rx='5' fill='%2310b981' opacity='.6'/></svg>`;
+const manifest = {
+  name:"YT Automation Tracker",short_name:"YT Tracker",
+  description:"Track your Health After 40 YouTube automation channel",
+  start_url:".",display:"standalone",
+  background_color:"#07090f",theme_color:"#07090f",orientation:"portrait-primary",
   icons:[
-    {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='24' fill='%2307090f'/%3E%3Ccircle cx='96' cy='96' r='60' fill='%2310b981'/%3E%3Cpolygon points='80,70 80,122 128,96' fill='white'/%3E%3C/svg%3E",sizes:"192x192",type:"image/svg+xml",purpose:"any maskable"},
-    {src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='60' fill='%2307090f'/%3E%3Ccircle cx='256' cy='256' r='160' fill='%2310b981'/%3E%3Cpolygon points='210,185 210,327 340,256' fill='white'/%3E%3C/svg%3E",sizes:"512x512",type:"image/svg+xml",purpose:"any maskable"}
+    {src:`data:image/svg+xml,${ICON_SVG}`,sizes:"192x192",type:"image/svg+xml",purpose:"any maskable"},
+    {src:`data:image/svg+xml,${ICON_SVG}`,sizes:"512x512",type:"image/svg+xml",purpose:"any maskable"}
   ]
 };
-const blob = new Blob([JSON.stringify(manifestData)],{type:'application/json'});
-document.getElementById('pwa-manifest').href = URL.createObjectURL(blob);
+const mblob = new Blob([JSON.stringify(manifest)],{type:'application/json'});
+document.getElementById('pwa-manifest').href = URL.createObjectURL(mblob);
 
-// ── SERVICE WORKER ────────────────────────────────────────────────────────
+const SW = `const C='yttrk-v2';
+self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['.'])).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(clients.claim()));
+self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const rc=res.clone();caches.open(C).then(c=>c.put(e.request,rc));}return res;}))));`;
 if('serviceWorker' in navigator){
-  const swCode=`
-    const CACHE='yt-tracker-v1';
-    self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['.']))));
-    self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{const rc=res.clone();caches.open(CACHE).then(c=>c.put(e.request,rc));return res;}))));
-  `;
-  const swBlob=new Blob([swCode],{type:'application/javascript'});
-  navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(()=>{});
+  const swb = new Blob([SW],{type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(swb)).catch(()=>{});
 }
 
-// ── INSTALL PROMPT ────────────────────────────────────────────────────────
-let deferredInstall=null;
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();deferredInstall=e;
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); deferredPrompt = e;
   document.getElementById('install-banner').classList.add('show');
 });
-function installApp(){
-  if(deferredInstall){deferredInstall.prompt();deferredInstall.userChoice.then(()=>{deferredInstall=null;document.getElementById('install-banner').classList.remove('show');});}
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-banner').classList.remove('show');
+  toast('App installed! ✓');
+});
+function doInstall(){
+  if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;document.getElementById('install-banner').classList.remove('show');});}
+  else { toast('Open in Chrome browser to install','err'); }
 }
 
-// ── STORAGE ───────────────────────────────────────────────────────────────
-const SK='yt-tracker-v3';
-function loadDB(){try{const d=localStorage.getItem(SK);return d?JSON.parse(d):null}catch{return null}}
-function persistDB(d){try{localStorage.setItem(SK,JSON.stringify(d))}catch{}}
+// ═══ DATA ════════════════════════════════════════════════════════════
+const SK = 'yt-tracker-v4';
+function loadDB(){ try{const d=localStorage.getItem(SK);return d?JSON.parse(d):null}catch{return null} }
+function persistDB(d){ try{localStorage.setItem(SK,JSON.stringify(d))}catch{} }
 
-// ── DEFAULTS ──────────────────────────────────────────────────────────────
-const DEFAULT_CHECKLIST=[
+const DEF_CL = [
   {id:'script',   label:'Script Written',             type:'check'},
   {id:'voiceover',label:'Voiceover Recorded',         type:'check'},
   {id:'footage',  label:'Stock Footage Downloaded',   type:'check'},
@@ -333,7 +325,7 @@ const DEFAULT_CHECKLIST=[
   {id:'contrast', label:'Thumbnail High Contrast?',   type:'yn'},
 ];
 
-const DEFAULT_TOPICS=[
+const DEF_TOPICS = [
   '5 Foods That Are Secretly Destroying Your Memory After 50',
   'The #1 Vitamin Most People Over 40 Are Deficient In',
   'What Happens to Your Body When You Eat Turmeric Every Day',
@@ -348,389 +340,384 @@ const DEFAULT_TOPICS=[
   'Why Most Multivitamins Are Useless (And What to Take Instead)',
 ];
 
-const STATUSES=['planned','in-progress','uploaded','monetized'];
-const STATUS_COLOR={planned:'#64748b','in-progress':'#f59e0b',uploaded:'#10b981',monetized:'#818cf8'};
-const STATUS_LABEL={planned:'Planned','in-progress':'In Progress',uploaded:'Live',monetized:'Monetized'};
+const STATUSES = ['planned','in-progress','uploaded','monetized'];
+const SC = {planned:'#64748b','in-progress':'#f59e0b',uploaded:'#10b981',monetized:'#818cf8'};
+const SL = {planned:'Planned','in-progress':'In Progress',uploaded:'Live',monetized:'Monetized'};
 
+function weekNum(){
+  const n=new Date(),s=new Date(n.getFullYear(),0,1);
+  return Math.ceil(((n-s)/86400000+s.getDay()+1)/7);
+}
 function emptyVideo(topic=''){
   const cl={};
-  DEFAULT_CHECKLIST.forEach(c=>cl[c.id]=c.type==='yn'?null:false);
-  return {
-    id:'v'+Date.now()+Math.floor(Math.random()*9999),
-    topic,status:'planned',checklist:cl,customChecklist:[],
-    metrics:{impressions:'',views_24h:'',views_72h:'',views_7d:'',ctr:'',avd:'',subs_gained:'',revenue:''},
-    notes:'',uploadDate:'',weekNumber:currentWeek()
-  };
+  DEF_CL.forEach(c=>cl[c.id]=c.type==='yn'?null:false);
+  return {id:'v'+Date.now()+Math.floor(Math.random()*9999),topic,status:'planned',
+    checklist:cl,customChecklist:[],
+    metrics:{impressions:'',ctr:'',views_24h:'',views_72h:'',views_7d:'',avd:'',subs_gained:'',revenue:''},
+    notes:'',uploadDate:'',week:weekNum()};
 }
 
-function currentWeek(){
-  const now=new Date();const start=new Date(now.getFullYear(),0,1);
-  return Math.ceil(((now-start)/86400000+start.getDay()+1)/7);
-}
-function weekLabel(){
-  const now=new Date();
-  const mon=new Date(now);mon.setDate(now.getDate()-now.getDay()+1);
-  const sun=new Date(mon);sun.setDate(mon.getDate()+6);
-  return `Week ${currentWeek()} · ${mon.getMonth()+1}/${mon.getDate()} – ${sun.getMonth()+1}/${sun.getDate()}`;
-}
-
-// ── STATE ─────────────────────────────────────────────────────────────────
-let DB=loadDB()||{
-  videos:DEFAULT_TOPICS.slice(0,3).map(t=>emptyVideo(t)),
-  topicBank:[...DEFAULT_TOPICS],
-  channelStats:{subscribers:'',totalViews:'',totalRevenue:'',monthlyGoal:'1000',totalImpressions:'',channelCTR:''},
-  weeklyLog:[]
+let DB = loadDB() || {
+  videos: DEF_TOPICS.slice(0,3).map(t=>emptyVideo(t)),
+  topicBank: [...DEF_TOPICS],
+  cs:{subscribers:'',totalViews:'',totalImpressions:'',channelCTR:'',totalRevenue:'',monthlyGoal:'1000'}
 };
+// migrate old data
+if(!DB.cs) DB.cs = DB.channelStats || {};
 DB.videos.forEach(v=>{
-  if(!v.customChecklist)v.customChecklist=[];
-  if(!v.metrics.impressions)v.metrics.impressions='';
-  if(!v.metrics.revenue)v.metrics.revenue='';
-  if(!v.weekNumber)v.weekNumber=currentWeek();
+  if(!v.customChecklist) v.customChecklist=[];
+  if(!v.metrics) v.metrics={};
+  if(v.metrics.impressions===undefined) v.metrics.impressions='';
+  if(v.metrics.revenue===undefined) v.metrics.revenue='';
+  if(!v.week) v.week=weekNum();
 });
-let editingTopics=false;
-let _customType={};
 
-function save(){persistDB(DB);toast('Saved ✓');}
-function toast(msg,err=false){
+let editingTopics=false, customType={};
+
+function save(){ persistDB(DB); toast('Saved ✓'); }
+
+// ═══ TOAST ════════════════════════════════════════════════════════════
+function toast(msg, type=''){
   const t=document.getElementById('toast');
-  t.textContent=msg;t.className=err?'show error':'show';
-  clearTimeout(t._timer);t._timer=setTimeout(()=>t.className='',2200);
+  t.textContent=msg; t.className=type==='err'?'show err':'show';
+  clearTimeout(t._t); t._t=setTimeout(()=>t.className='',2200);
 }
 
-// ── TABS ──────────────────────────────────────────────────────────────────
+// ═══ TABS ═════════════════════════════════════════════════════════════
 function goTab(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  const nb=document.getElementById('nav-'+(name==='detail'?'videos':name));
+  const nb=document.getElementById('nb-'+(name==='detail'?'videos':name));
   if(nb)nb.classList.add('active');
-  if(name==='dashboard')renderDashboard();
-  if(name==='videos')renderVideosList();
-  if(name==='topics')renderTopics();
-  if(name==='stats')renderStats();
+  if(name==='dashboard') renderDash();
+  if(name==='videos') renderVideos();
+  if(name==='topics') renderTopics();
+  if(name==='stats') renderStats();
 }
 
-// ── DASHBOARD ─────────────────────────────────────────────────────────────
-function renderDashboard(){
-  document.getElementById('header-week').textContent=weekLabel();
-  const live=DB.videos.filter(v=>v.status==='uploaded'||v.status==='monetized').length;
+// ═══ DASHBOARD ════════════════════════════════════════════════════════
+function renderDash(){
+  const wk=weekNum();
+  const now=new Date(), mon=new Date(now); mon.setDate(now.getDate()-now.getDay()+1);
+  const sun=new Date(mon); sun.setDate(mon.getDate()+6);
+  const fmt=d=>`${d.getMonth()+1}/${d.getDate()}`;
+  document.getElementById('week-label').textContent=`Week ${wk} · Health After 40`;
+  document.getElementById('hdr-right').textContent=`${fmt(mon)}–${fmt(sun)}`;
+
+  const live=DB.videos.filter(v=>v.status==='uploaded'||v.status==='monetized');
   const inp=DB.videos.filter(v=>v.status==='in-progress').length;
-  document.getElementById('stat-grid').innerHTML=`
-    ${sc('Videos Live',live,'#10b981')}
-    ${sc('In Production',inp,'#f59e0b')}
-    ${sc('Total Planned',DB.videos.length,'#818cf8')}
-    ${sc('Subscribers',DB.channelStats.subscribers||'—','#ec4899')}
-  `;
+  document.getElementById('stat-grid').innerHTML=
+    scard('Videos Live',live.length,'#10b981')+
+    scard('In Progress',inp,'#f59e0b')+
+    scard('All Videos',DB.videos.length,'#818cf8')+
+    scard('Subscribers',DB.cs.subscribers||'—','#ec4899');
 
-  // Weekly analytics — videos uploaded this week
-  const wk=currentWeek();
-  const thisWeek=DB.videos.filter(v=>v.weekNumber==wk);
-  const allLive=DB.videos.filter(v=>v.status==='uploaded'||v.status==='monetized');
+  // This week videos
+  const thisWk=DB.videos.filter(v=>v.week==wk);
+  document.getElementById('week-range').textContent=`${fmt(mon)} – ${fmt(sun)}`;
+  document.getElementById('week-count').textContent=thisWk.length;
 
-  // Aggregate metrics
-  const totalImp=allLive.reduce((s,v)=>s+(parseFloat(v.metrics.impressions)||0),0);
-  const ctrs=allLive.filter(v=>parseFloat(v.metrics.ctr)>0).map(v=>parseFloat(v.metrics.ctr));
-  const avgCTR=ctrs.length?ctrs.reduce((a,b)=>a+b,0)/ctrs.length:null;
-  const totalViews7=allLive.reduce((s,v)=>s+(parseFloat(v.metrics.views_7d)||0),0);
-  const totalRev=allLive.reduce((s,v)=>s+(parseFloat(v.metrics.revenue)||0),0);
+  // Aggregate metrics from ALL live videos
+  const totalImp = live.reduce((s,v)=>s+(parseFloat(v.metrics.impressions)||0),0);
+  const ctrs = live.filter(v=>parseFloat(v.metrics.ctr)>0).map(v=>parseFloat(v.metrics.ctr));
+  const avgCTR = ctrs.length ? ctrs.reduce((a,b)=>a+b,0)/ctrs.length : null;
+  const totalV7 = live.reduce((s,v)=>s+(parseFloat(v.metrics.views_7d)||0),0);
+  const totalRev = live.reduce((s,v)=>s+(parseFloat(v.metrics.revenue)||0),0);
+  const wkViews = thisWk.reduce((s,v)=>s+(parseFloat(v.metrics.views_7d)||0),0);
 
-  document.getElementById('weekly-grid').innerHTML=`
-    ${wi('This Week Videos',thisWeek.length,'#10b981')}
-    ${wi('Total Impressions',totalImp?fmtNum(totalImp):'—','#818cf8')}
-    ${wi('Avg CTR',avgCTR?avgCTR.toFixed(1)+'%':'—','#f59e0b')}
-    ${wi('Views (7d avg)',allLive.length&&totalViews7?fmtNum(Math.round(totalViews7/allLive.length)):'—','#38bdf8')}
-    ${wi('Total Revenue','$'+(totalRev?totalRev.toFixed(2):'0.00'),'#10b981')}
-    ${wi('Live Videos',live,'#ec4899')}
-  `;
+  document.getElementById('weekly-grid').innerHTML=
+    wi('This Week',thisWk.length+' videos','#10b981')+
+    wi('Impressions',totalImp?fmt2(totalImp):'—','#818cf8')+
+    wi('Avg CTR',avgCTR?avgCTR.toFixed(1)+'%':'—','#f59e0b')+
+    wi('Week Views',wkViews?fmt2(wkViews):'—','#38bdf8')+
+    wi('Revenue','$'+(totalRev?totalRev.toFixed(2):'0.00'),'#10b981')+
+    wi('Avg Views/vid',live.length&&totalV7?fmt2(Math.round(totalV7/live.length)):'—','#ec4899');
 
-  // Niche meter
-  if(avgCTR){
-    const ctrPct=Math.min(avgCTR/10*100,100);
-    document.getElementById('niche-ctr-bar').style.width=ctrPct+'%';
-    document.getElementById('niche-ctr-bar').style.background=avgCTR>=6?'#10b981':avgCTR>=4?'#f59e0b':'#ef4444';
-    document.getElementById('niche-ctr-val').textContent=avgCTR.toFixed(2)+'%';
+  // Niche meters
+  if(avgCTR!==null){
+    const pct=Math.min(avgCTR/10*100,100);
+    const col=avgCTR>=6?'#10b981':avgCTR>=4?'#f59e0b':'#ef4444';
+    document.getElementById('ctr-bar').style.cssText=`width:${pct}%;background:${col}`;
+    document.getElementById('ctr-val').style.color=col;
+    document.getElementById('ctr-val').textContent=avgCTR.toFixed(2)+'%';
   }
   if(totalImp){
-    const impPct=Math.min(totalImp/50000*100,100);
-    document.getElementById('niche-imp-bar').style.width=impPct+'%';
-    document.getElementById('niche-imp-val').textContent=fmtNum(Math.round(totalImp));
+    const pct=Math.min(totalImp/100000*100,100);
+    document.getElementById('imp-bar').style.cssText=`width:${pct}%;background:var(--purple)`;
+    document.getElementById('imp-val').textContent=fmt2(Math.round(totalImp));
   }
-  // Verdict
-  const vd=document.getElementById('niche-verdict');
-  if(avgCTR){
-    vd.style.display='block';
-    if(avgCTR>=6){
-      vd.style.background='#10b98115';vd.style.border='1px solid #10b98140';vd.style.color='#10b981';
-      vd.textContent='✅ Niche is working. CTR above 6% — YouTube is showing your content and people are clicking. Stay the course.';
-    } else if(avgCTR>=4){
-      vd.style.background='#f59e0b15';vd.style.border='1px solid #f59e0b40';vd.style.color='#f59e0b';
-      vd.textContent='⚠️ Decent but improvable. CTR 4–6% — test stronger thumbnails and hooks before switching niche.';
-    } else {
-      vd.style.background='#ef444415';vd.style.border='1px solid #ef444440';vd.style.color='#ef4444';
-      vd.textContent='🔴 CTR below 4% — thumbnails or titles need work. Test 5 more videos before deciding to swap niche.';
-    }
-  } else {vd.style.display='none';}
 
-  // Fill channel inputs
-  const map={subscribers:'subs',totalViews:'views',totalRevenue:'rev',monthlyGoal:'goal',totalImpressions:'imps',channelCTR:'ctr'};
-  Object.entries(map).forEach(([k,s])=>{const el=document.getElementById('ch-'+s);if(el)el.value=DB.channelStats[k]||'';});
+  const vd=document.getElementById('verdict');
+  if(avgCTR!==null){
+    vd.style.display='block';
+    let bg,bc,col,msg;
+    if(avgCTR>=8){bg='#10b98112';bc='#10b98135';col='#10b981';msg='🚀 Excellent! CTR above 8% — this niche is crushing it. Scale up production and double down.';}
+    else if(avgCTR>=6){bg='#10b98112';bc='#10b98135';col='#10b981';msg='✅ Strong CTR above 6% — YouTube is pushing your content. Stay in this niche and keep uploading.';}
+    else if(avgCTR>=4){bg='#f59e0b12';bc='#f59e0b35';col='#f59e0b';msg='⚠️ CTR 4–6% — decent but test stronger thumbnails and hook variations before changing niche.';}
+    else{bg='#ef444412';bc='#ef444435';col='#ef4444';msg='🔴 CTR below 4%. Improve thumbnails and titles first. Upload 5 more before deciding to swap niche.';}
+    vd.style.cssText=`background:${bg};border:1px solid ${bc};color:${col};display:block`;
+    vd.textContent=msg;
+  } else {
+    vd.style.display='none';
+  }
+
+  // Channel stat fields
+  const m={subscribers:'subs',totalViews:'views',totalImpressions:'imps',channelCTR:'ctr',totalRevenue:'rev',monthlyGoal:'goal'};
+  Object.entries(m).forEach(([k,s])=>{const el=document.getElementById('ch-'+s);if(el)el.value=DB.cs[k]||'';});
 
   document.getElementById('dash-recent').innerHTML=
-    DB.videos.slice(0,5).map(v=>videoRowHTML(v)).join('')||'<div class="empty">No videos yet.</div>';
+    DB.videos.slice(0,6).map(v=>vrow(v)).join('')||'<div class="empty">No videos yet.</div>';
 }
-function sc(label,val,accent){return `<div class="stat-card" style="border:1px solid ${accent}25"><div class="stat-val" style="color:${accent}">${val}</div><div class="stat-label">${label}</div></div>`;}
-function wi(label,val,color){return `<div class="weekly-item"><div class="weekly-item-label">${label}</div><div class="weekly-item-val" style="color:${color}">${val}</div></div>`;}
-function fmtNum(n){return n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(1)+'K':String(n);}
-function saveChannelStat(key,val){DB.channelStats[key]=val;save();}
+function scard(l,v,a){return `<div class="stat-card" style="border:1px solid ${a}25"><div class="stat-val" style="color:${a}">${v}</div><div class="stat-label">${l}</div></div>`;}
+function wi(l,v,c){return `<div class="wi"><div class="wi-label">${l}</div><div class="wi-val" style="color:${c}">${v}</div></div>`;}
+function fmt2(n){return n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(1)+'K':String(n);}
+function saveCS(k,v){DB.cs[k]=v;save();}
 
-// ── VIDEOS LIST ───────────────────────────────────────────────────────────
-function renderVideosList(){
+// ═══ VIDEOS LIST ══════════════════════════════════════════════════════
+function renderVideos(){
   let html='';
   STATUSES.forEach(s=>{
     const vids=DB.videos.filter(v=>v.status===s);
     if(!vids.length)return;
-    html+=`<div class="section-label" style="color:${STATUS_COLOR[s]}">${STATUS_LABEL[s]} (${vids.length})</div>`;
-    html+=vids.map(v=>videoRowHTML(v)).join('');
-    html+='<div style="margin-bottom:14px"></div>';
+    html+=`<div class="section-label" style="color:${SC[s]}">${SL[s]} (${vids.length})</div>`;
+    html+=vids.map(v=>vrow(v)).join('');
+    html+='<div style="margin-bottom:12px"></div>';
   });
   document.getElementById('videos-list').innerHTML=html||'<div class="empty">No videos yet. Tap "+ Add" to start.</div>';
 }
 
-function videoRowHTML(v){
-  const all=[...DEFAULT_CHECKLIST,...(v.customChecklist||[])];
+function vrow(v){
+  const all=[...DEF_CL,...(v.customChecklist||[])];
   const done=all.filter(c=>{const x=v.checklist[c.id];return x===true||x==='yes';}).length;
   const pct=all.length?Math.round(done/all.length*100):0;
   const fill=pct===100?'#10b981':'#f59e0b';
-  const ctrBadge=v.metrics.ctr?`<span style="font-size:11px;color:var(--muted);margin-left:8px">CTR ${v.metrics.ctr}%</span>`:'';
-  const impBadge=v.metrics.impressions?`<span style="font-size:11px;color:var(--muted);margin-left:6px">· ${fmtNum(parseInt(v.metrics.impressions)||0)} imps</span>`:'';
+  const ctr=v.metrics.ctr?`<span style="font-size:10px;color:var(--amber);margin-left:6px">CTR ${v.metrics.ctr}%</span>`:'';
+  const imp=v.metrics.impressions?`<span style="font-size:10px;color:var(--purple);margin-left:5px">· ${fmt2(parseInt(v.metrics.impressions)||0)} imps</span>`:'';
   return `<div class="video-row" onclick="openDetail('${v.id}')">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:9px">
       <div style="flex:1;min-width:0">
-        <div style="font-size:14px;font-weight:600;line-height:1.4;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escH(v.topic)}</div>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div style="font-size:13px;font-weight:600;line-height:1.4;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${eH(v.topic)}</div>
+        <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
           <div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${fill}"></div></div>
-          <span style="font-size:11px;color:var(--muted);white-space:nowrap">${done}/${all.length}</span>
-          ${ctrBadge}${impBadge}
+          <span style="font-size:10px;color:var(--muted)">${done}/${all.length}</span>${ctr}${imp}
         </div>
       </div>
-      <div class="badge" style="background:${STATUS_COLOR[v.status]}20;color:${STATUS_COLOR[v.status]}">${STATUS_LABEL[v.status]}</div>
+      <div class="badge" style="background:${SC[v.status]}20;color:${SC[v.status]}">${SL[v.status]}</div>
     </div>
   </div>`;
 }
 
-// ── ADD VIDEO MODAL ───────────────────────────────────────────────────────
-function openAddVideoModal(){
-  document.getElementById('new-topic-input').value='';
+// ═══ ADD MODAL ════════════════════════════════════════════════════════
+function openAddModal(){
+  document.getElementById('new-topic').value='';
   const unused=DB.topicBank.filter(t=>!DB.videos.find(v=>v.topic===t));
   document.getElementById('topic-picker').innerHTML=unused.map(t=>
-    `<button class="btn-ghost" style="text-align:left;border-radius:8px;padding:9px 12px;font-size:13px;line-height:1.3" onclick="pickTopic(this,'${escA(t)}')">${escH(t)}</button>`
+    `<button class="btn-ghost" style="text-align:left;border-radius:8px;padding:9px 12px;font-size:12px;line-height:1.4" onclick="pickT(this,'${eA(t)}')">${eH(t)}</button>`
   ).join('');
-  document.getElementById('add-video-modal').style.display='flex';
+  document.getElementById('add-modal').style.display='flex';
 }
-function pickTopic(btn,t){
-  document.getElementById('new-topic-input').value=t;
+function pickT(btn,t){
+  document.getElementById('new-topic').value=t;
   document.querySelectorAll('#topic-picker button').forEach(b=>{b.style.borderColor='';b.style.color='';b.style.background='';});
-  btn.style.borderColor='var(--green)';btn.style.color='var(--green)';btn.style.background='#10b98115';
+  btn.style.cssText+=';border-color:var(--green);color:var(--green);background:#10b98112';
 }
-function closeAddVideoModal(){document.getElementById('add-video-modal').style.display='none';}
-function outsideModalClose(e){if(e.target.classList.contains('modal-overlay'))closeAddVideoModal();}
-function confirmAddVideo(){
-  const t=document.getElementById('new-topic-input').value.trim();
-  if(!t){toast('Enter a topic first',true);return;}
-  DB.videos.push(emptyVideo(t));save();closeAddVideoModal();renderVideosList();
+function closeAddModal(){document.getElementById('add-modal').style.display='none';}
+function confirmAdd(){
+  const t=document.getElementById('new-topic').value.trim();
+  if(!t){toast('Enter a topic first','err');return;}
+  DB.videos.push(emptyVideo(t));save();closeAddModal();renderVideos();
 }
 
-// ── VIDEO DETAIL ──────────────────────────────────────────────────────────
+// ═══ VIDEO DETAIL ═════════════════════════════════════════════════════
 function openDetail(id){
   const v=DB.videos.find(x=>x.id===id);if(!v)return;
   renderDetail(v);goTab('detail');
 }
 
 function renderDetail(v){
-  const all=[...DEFAULT_CHECKLIST,...(v.customChecklist||[])];
+  const allItems=[...DEF_CL,...(v.customChecklist||[])];
   document.getElementById('detail-content').innerHTML=`
   <div class="card">
-    <div class="field-label" style="margin-bottom:6px">Video Title</div>
-    <textarea id="d-topic" rows="2" style="font-size:15px;font-weight:600;resize:none;margin-bottom:12px" oninput="updateField('${v.id}','topic',this.value)">${escH(v.topic)}</textarea>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <div style="flex:1;min-width:130px">
+    <div class="field-label" style="margin-bottom:5px">Video Title</div>
+    <textarea rows="2" style="font-size:14px;font-weight:600;resize:none;margin-bottom:11px" oninput="uf('${v.id}','topic',this.value)">${eH(v.topic)}</textarea>
+    <div style="display:flex;gap:9px;flex-wrap:wrap">
+      <div style="flex:1;min-width:120px">
         <div class="field-label">Status</div>
-        <select onchange="updateField('${v.id}','status',this.value)" style="color:${STATUS_COLOR[v.status]};font-weight:700">
-          ${STATUSES.map(s=>`<option value="${s}"${v.status===s?' selected':''}>${STATUS_LABEL[s]}</option>`).join('')}
+        <select onchange="uf('${v.id}','status',this.value)" style="color:${SC[v.status]};font-weight:700">
+          ${STATUSES.map(s=>`<option value="${s}"${v.status===s?' selected':''}>${SL[s]}</option>`).join('')}
         </select>
       </div>
-      <div style="flex:1;min-width:130px">
+      <div style="flex:1;min-width:120px">
         <div class="field-label">Upload Date</div>
-        <input type="date" value="${v.uploadDate||''}" onchange="updateField('${v.id}','uploadDate',this.value)"/>
+        <input type="date" value="${v.uploadDate||''}" onchange="uf('${v.id}','uploadDate',this.value)"/>
       </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Production Checklist</div>
-    <div id="cl-${v.id}">${all.map(item=>checkRowHTML(v,item)).join('')}</div>
-    <div class="add-item-form">
-      <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:10px">＋ Add Custom Item</div>
-      <div class="field-label" style="margin-bottom:5px">Label</div>
-      <input id="ci-label-${v.id}" placeholder="e.g. Added end screen, Verified captions..." style="margin-bottom:10px"/>
-      <div class="field-label" style="margin-bottom:6px">Type</div>
-      <div class="type-toggle">
-        <button id="ct-check-${v.id}" class="type-btn active-check" onclick="setCustomType('${v.id}','check')">✓ Checkbox</button>
-        <button id="ct-yn-${v.id}" class="type-btn" onclick="setCustomType('${v.id}','yn')">Yes / No</button>
-      </div>
-      <button class="btn-green" style="width:100%" onclick="addCustomItem('${v.id}')">Add to Checklist</button>
     </div>
   </div>
 
   <div class="card">
     <div class="card-title">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Production Checklist
+    </div>
+    <div id="cl-${v.id}">${allItems.map(item=>clRow(v,item)).join('')}</div>
+
+    <!-- ADD CUSTOM ITEM -->
+    <div class="add-form">
+      <div class="add-form-title">＋ Add Custom Item</div>
+      <div class="field-label" style="margin-bottom:5px">Label</div>
+      <input id="ci-${v.id}" placeholder="e.g. Added end screen, Verified captions, B-roll quality checked..." style="margin-bottom:9px"/>
+      <div class="field-label" style="margin-bottom:5px">Type</div>
+      <div class="type-toggle">
+        <button id="ct-c-${v.id}" class="type-btn tc" onclick="setCT('${v.id}','check')">✓ Checkbox</button>
+        <button id="ct-y-${v.id}" class="type-btn" onclick="setCT('${v.id}','yn')">Yes / No</button>
+      </div>
+      <button class="btn-green" style="width:100%" onclick="addCI('${v.id}')">Add to Checklist</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Performance Metrics
     </div>
     <div class="metrics-grid">
-      <div><div class="field-label">Impressions</div><input value="${v.metrics.impressions||''}" placeholder="—" oninput="updateMetric('${v.id}','impressions',this.value)" style="color:var(--purple);font-weight:600"/></div>
-      <div><div class="field-label">CTR (%)</div><input value="${v.metrics.ctr||''}" placeholder="—" oninput="updateMetric('${v.id}','ctr',this.value)" style="color:var(--amber);font-weight:600"/></div>
-      <div><div class="field-label">Views at 24h</div><input value="${v.metrics.views_24h||''}" placeholder="—" oninput="updateMetric('${v.id}','views_24h',this.value)" style="color:var(--green);font-weight:600"/></div>
-      <div><div class="field-label">Views at 72h</div><input value="${v.metrics.views_72h||''}" placeholder="—" oninput="updateMetric('${v.id}','views_72h',this.value)" style="color:var(--green);font-weight:600"/></div>
-      <div><div class="field-label">Views at 7 days</div><input value="${v.metrics.views_7d||''}" placeholder="—" oninput="updateMetric('${v.id}','views_7d',this.value)" style="color:var(--green);font-weight:600"/></div>
-      <div><div class="field-label">Avg View Duration</div><input value="${v.metrics.avd||''}" placeholder="—" oninput="updateMetric('${v.id}','avd',this.value)" style="color:var(--blue);font-weight:600"/></div>
-      <div><div class="field-label">Subs Gained</div><input value="${v.metrics.subs_gained||''}" placeholder="—" oninput="updateMetric('${v.id}','subs_gained',this.value)" style="color:var(--pink);font-weight:600"/></div>
-      <div><div class="field-label">Revenue ($)</div><input value="${v.metrics.revenue||''}" placeholder="—" oninput="updateMetric('${v.id}','revenue',this.value)" style="color:var(--green);font-weight:600"/></div>
+      <div><div class="field-label" style="color:var(--purple)">Impressions</div><input value="${v.metrics.impressions||''}" placeholder="—" oninput="um('${v.id}','impressions',this.value)" style="color:var(--purple);font-weight:700"/></div>
+      <div><div class="field-label" style="color:var(--amber)">CTR (%)</div><input value="${v.metrics.ctr||''}" placeholder="—" oninput="um('${v.id}','ctr',this.value)" style="color:var(--amber);font-weight:700"/></div>
+      <div><div class="field-label">Views 24h</div><input value="${v.metrics.views_24h||''}" placeholder="—" oninput="um('${v.id}','views_24h',this.value)" style="color:var(--green);font-weight:600"/></div>
+      <div><div class="field-label">Views 72h</div><input value="${v.metrics.views_72h||''}" placeholder="—" oninput="um('${v.id}','views_72h',this.value)" style="color:var(--green);font-weight:600"/></div>
+      <div><div class="field-label">Views 7 days</div><input value="${v.metrics.views_7d||''}" placeholder="—" oninput="um('${v.id}','views_7d',this.value)" style="color:var(--green);font-weight:600"/></div>
+      <div><div class="field-label">Avg View Duration</div><input value="${v.metrics.avd||''}" placeholder="e.g. 4:32" oninput="um('${v.id}','avd',this.value)" style="color:var(--blue);font-weight:600"/></div>
+      <div><div class="field-label">Subs Gained</div><input value="${v.metrics.subs_gained||''}" placeholder="—" oninput="um('${v.id}','subs_gained',this.value)" style="color:var(--pink);font-weight:600"/></div>
+      <div><div class="field-label">Revenue ($)</div><input value="${v.metrics.revenue||''}" placeholder="—" oninput="um('${v.id}','revenue',this.value)" style="color:var(--green);font-weight:600"/></div>
     </div>
   </div>
 
   <div class="card">
     <div class="card-title">Notes</div>
-    <textarea rows="4" placeholder="Hook ideas, thumbnail notes, what worked, what didn't..." oninput="updateField('${v.id}','notes',this.value)" style="resize:vertical">${escH(v.notes||'')}</textarea>
+    <textarea rows="4" placeholder="Hook ideas, thumbnail notes, what worked, what didn't..." oninput="uf('${v.id}','notes',this.value)" style="resize:vertical">${eH(v.notes||'')}</textarea>
   </div>
 
-  <div style="text-align:center;margin-bottom:32px">
-    <button class="btn-ghost" style="color:var(--red);border-color:#ef444440" onclick="confirmDel('${v.id}')">Delete Video</button>
+  <div style="text-align:center;margin-bottom:30px">
+    <button class="btn-ghost" style="color:var(--red);border-color:#ef444435" onclick="delVideo('${v.id}')">Delete Video</button>
   </div>`;
-  _customType[v.id]='check';
+  customType[v.id]='check';
 }
 
-function checkRowHTML(v,item){
-  const isCustom=!DEFAULT_CHECKLIST.find(d=>d.id===item.id);
+function clRow(v,item){
+  const isCust=!DEF_CL.find(d=>d.id===item.id);
   const val=v.checklist[item.id];
-  const tag=isCustom?'<span class="custom-tag">custom</span>':'';
-  const del=isCustom?`<button class="del-item" onclick="removeCustom('${v.id}','${item.id}')">✕</button>`:'';
+  const tag=isCust?'<span class="custom-tag">custom</span>':'';
+  const del=isCust?`<button class="del-item" onclick="rmCI('${v.id}','${item.id}')">✕</button>`:'';
   if(item.type==='check'){
     const ck=val===true;
-    return `<div class="check-row"><div style="display:flex;align-items:center;gap:6px;flex:1">${tag}<span class="check-label">${escH(item.label)}</span></div><div style="display:flex;align-items:center;gap:6px">${del}<button class="check-box${ck?' checked':''}" onclick="toggleCheck('${v.id}','${item.id}')">${ck?'✓':''}</button></div></div>`;
+    return `<div class="check-row">
+      <div style="display:flex;align-items:center;gap:6px;flex:1">${tag}<span class="check-label">${eH(item.label)}</span></div>
+      <div style="display:flex;align-items:center;gap:6px">${del}
+        <button class="check-box${ck?' checked':''}" onclick="tCheck('${v.id}','${item.id}')">${ck?'✓':''}</button>
+      </div></div>`;
   } else {
-    const ya=val==='yes',na=val==='no';
-    return `<div class="check-row"><div style="display:flex;align-items:center;gap:6px;flex:1">${tag}<span class="check-label">${escH(item.label)}</span></div><div style="display:flex;align-items:center;gap:6px">${del}<button class="yn-btn${ya?' yes-active':''}" onclick="toggleYN('${v.id}','${item.id}','yes')">Yes</button><button class="yn-btn${na?' no-active':''}" onclick="toggleYN('${v.id}','${item.id}','no')">No</button></div></div>`;
+    const ya=val==='yes', na=val==='no';
+    return `<div class="check-row">
+      <div style="display:flex;align-items:center;gap:6px;flex:1">${tag}<span class="check-label">${eH(item.label)}</span></div>
+      <div style="display:flex;align-items:center;gap:6px">${del}
+        <button class="yn-btn yn-yes${ya?' active':''}" onclick="tYN('${v.id}','${item.id}','yes')">Yes</button>
+        <button class="yn-btn yn-no${na?' active':''}" onclick="tYN('${v.id}','${item.id}','no')">No</button>
+      </div></div>`;
   }
 }
 
-function refreshChecklist(vid){
+function reCL(vid){
   const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  const all=[...DEFAULT_CHECKLIST,...(v.customChecklist||[])];
-  document.getElementById('cl-'+vid).innerHTML=all.map(item=>checkRowHTML(v,item)).join('');
+  const all=[...DEF_CL,...(v.customChecklist||[])];
+  document.getElementById('cl-'+vid).innerHTML=all.map(i=>clRow(v,i)).join('');
 }
-
-function toggleCheck(vid,cid){
+function tCheck(vid,cid){const v=DB.videos.find(x=>x.id===vid);if(!v)return;v.checklist[cid]=!v.checklist[cid];save();reCL(vid);}
+function tYN(vid,cid,val){const v=DB.videos.find(x=>x.id===vid);if(!v)return;v.checklist[cid]=v.checklist[cid]===val?null:val;save();reCL(vid);}
+function setCT(vid,type){
+  customType[vid]=type;
+  document.getElementById('ct-c-'+vid).className='type-btn'+(type==='check'?' tc':'');
+  document.getElementById('ct-y-'+vid).className='type-btn'+(type==='yn'?' ty':'');
+}
+function addCI(vid){
+  const el=document.getElementById('ci-'+vid);
+  const label=el.value.trim();if(!label){toast('Enter a label','err');return;}
   const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  v.checklist[cid]=!v.checklist[cid];save();refreshChecklist(vid);
-}
-function toggleYN(vid,cid,val){
-  const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  v.checklist[cid]=v.checklist[cid]===val?null:val;save();refreshChecklist(vid);
-}
-function setCustomType(vid,type){
-  _customType[vid]=type;
-  const cb=document.getElementById('ct-check-'+vid);
-  const yb=document.getElementById('ct-yn-'+vid);
-  if(type==='check'){cb.className='type-btn active-check';yb.className='type-btn';}
-  else{yb.className='type-btn active-yn';cb.className='type-btn';}
-}
-function addCustomItem(vid){
-  const lel=document.getElementById('ci-label-'+vid);
-  const label=lel.value.trim();if(!label){toast('Enter a label',true);return;}
-  const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  const id='c'+Date.now();
-  const type=_customType[vid]||'check';
+  const id='c'+Date.now();const type=customType[vid]||'check';
   v.customChecklist.push({id,label,type});
   v.checklist[id]=type==='yn'?null:false;
-  save();lel.value='';refreshChecklist(vid);
+  save();el.value='';reCL(vid);
 }
-function removeCustom(vid,cid){
+function rmCI(vid,cid){
   const v=DB.videos.find(x=>x.id===vid);if(!v)return;
   v.customChecklist=v.customChecklist.filter(c=>c.id!==cid);
-  delete v.checklist[cid];save();refreshChecklist(vid);
+  delete v.checklist[cid];save();reCL(vid);
 }
-function updateField(vid,key,val){
-  const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  v[key]=val;save();
-}
-function updateMetric(vid,key,val){
-  const v=DB.videos.find(x=>x.id===vid);if(!v)return;
-  if(!v.metrics)v.metrics={};
-  v.metrics[key]=val;save();
-}
-function confirmDel(vid){
+function uf(vid,key,val){const v=DB.videos.find(x=>x.id===vid);if(!v)return;v[key]=val;save();}
+function um(vid,key,val){const v=DB.videos.find(x=>x.id===vid);if(!v)return;if(!v.metrics)v.metrics={};v.metrics[key]=val;save();}
+function delVideo(vid){
   if(!confirm('Delete this video permanently?'))return;
   DB.videos=DB.videos.filter(v=>v.id!==vid);save();goTab('videos');
 }
 
-// ── TOPICS ────────────────────────────────────────────────────────────────
+// ═══ TOPICS ═══════════════════════════════════════════════════════════
 function renderTopics(){
   const ev=editingTopics;
   document.getElementById('topics-view').style.display=ev?'none':'block';
   document.getElementById('topics-edit').style.display=ev?'block':'none';
-  document.getElementById('edit-topics-btn').textContent=ev?'Cancel':'Edit';
-  document.getElementById('edit-topics-btn').style.background=ev?'#f59e0b15':'';
-  document.getElementById('edit-topics-btn').style.borderColor=ev?'#f59e0b':'';
-  document.getElementById('edit-topics-btn').style.color=ev?'#f59e0b':'';
-  if(ev){document.getElementById('topics-textarea').value=DB.topicBank.join('\n');return;}
+  const btn=document.getElementById('edit-btn');
+  btn.textContent=ev?'Cancel':'Edit';
+  btn.style.cssText=ev?'border-color:#f59e0b;color:#f59e0b;background:#f59e0b12':'';
+  if(ev){document.getElementById('topics-ta').value=DB.topicBank.join('\n');return;}
   document.getElementById('topics-view').innerHTML=DB.topicBank.map((t,i)=>{
     const used=DB.videos.find(v=>v.topic===t);
     return `<div class="topic-item" style="border-color:${used?'#10b98130':'var(--border)'}">
-      <div style="flex:1;font-size:14px;color:${used?'var(--green)':'var(--text)'}">
-        <span style="color:var(--border);margin-right:8px;font-size:12px">${String(i+1).padStart(2,'0')}</span>${escH(t)}
+      <div style="flex:1;font-size:13px;color:${used?'var(--green)':'var(--text)'}">
+        <span style="color:var(--border);margin-right:7px;font-size:11px">${String(i+1).padStart(2,'0')}</span>${eH(t)}
       </div>
-      <div style="font-size:11px;font-weight:700;color:${used?'var(--green)':'var(--border)'};margin-left:10px;white-space:nowrap">${used?'✓':'—'}</div>
+      <div style="font-size:10px;font-weight:700;color:${used?'var(--green)':'var(--border)'};margin-left:9px;white-space:nowrap">${used?'✓ Added':'—'}</div>
     </div>`;
   }).join('');
 }
 function toggleEditTopics(){editingTopics=!editingTopics;renderTopics();}
 function saveTopics(){
-  DB.topicBank=document.getElementById('topics-textarea').value.split('\n').map(t=>t.trim()).filter(Boolean);
+  DB.topicBank=document.getElementById('topics-ta').value.split('\n').map(t=>t.trim()).filter(Boolean);
   editingTopics=false;save();renderTopics();
 }
 
-// ── STATS ─────────────────────────────────────────────────────────────────
+// ═══ STATS ════════════════════════════════════════════════════════════
 function renderStats(){
   const live=DB.videos.filter(v=>v.status==='uploaded'||v.status==='monetized');
-  if(!live.length){
-    document.getElementById('stats-content').innerHTML='<div class="empty">No live videos yet. Stats appear once videos are marked as Live.</div>';
-    return;
-  }
+  if(!live.length){document.getElementById('stats-content').innerHTML='<div class="empty">No live videos yet. Mark videos as Live to see stats here.</div>';return;}
   document.getElementById('stats-content').innerHTML=live.map(v=>{
     const ctr=parseFloat(v.metrics.ctr)||0;
-    const ctrColor=ctr>=6?'var(--green)':ctr>=4?'var(--amber)':'var(--red)';
+    const cc=ctr>=6?'var(--green)':ctr>=4?'var(--amber)':'var(--red)';
+    const imp=parseInt(v.metrics.impressions)||0;
+    const impPct=Math.min(imp/10000*100,100);
+    const ctrPct=Math.min(ctr/10*100,100);
     return `<div class="card">
-      <div style="font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.4">${escH(v.topic)}</div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:12px">${STATUS_LABEL[v.status]} ${v.uploadDate?'· '+v.uploadDate:''}</div>
-      <div class="metrics-grid">
-        <div><div class="field-label">Impressions</div><input value="${v.metrics.impressions||''}" placeholder="—" oninput="updateMetric('${v.id}','impressions',this.value)" style="color:var(--purple);font-weight:600"/></div>
-        <div><div class="field-label" style="color:${ctrColor}">CTR (%)</div><input value="${v.metrics.ctr||''}" placeholder="—" oninput="updateMetric('${v.id}','ctr',this.value)" style="color:${ctrColor};font-weight:700"/></div>
-        <div><div class="field-label">Views 24h</div><input value="${v.metrics.views_24h||''}" placeholder="—" oninput="updateMetric('${v.id}','views_24h',this.value)" style="color:var(--green);font-weight:600"/></div>
-        <div><div class="field-label">Views 7d</div><input value="${v.metrics.views_7d||''}" placeholder="—" oninput="updateMetric('${v.id}','views_7d',this.value)" style="color:var(--green);font-weight:600"/></div>
-        <div><div class="field-label">Avg Duration</div><input value="${v.metrics.avd||''}" placeholder="—" oninput="updateMetric('${v.id}','avd',this.value)" style="color:var(--blue);font-weight:600"/></div>
-        <div><div class="field-label">Revenue ($)</div><input value="${v.metrics.revenue||''}" placeholder="—" oninput="updateMetric('${v.id}','revenue',this.value)" style="color:var(--green);font-weight:600"/></div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:3px;line-height:1.4">${eH(v.topic)}</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:12px">${SL[v.status]}${v.uploadDate?' · '+v.uploadDate:''}</div>
+      ${imp?`<div class="bar-meta"><span class="bar-name">Impressions</span><span class="bar-val" style="color:var(--purple)">${fmt2(imp)}</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${impPct}%;background:var(--purple)"></div></div>`:''}
+      ${ctr?`<div class="bar-meta" style="margin-top:6px"><span class="bar-name">CTR</span><span class="bar-val" style="color:${cc}">${ctr.toFixed(2)}%</span></div><div class="bar-wrap"><div class="bar-fill" style="width:${ctrPct}%;background:${cc}"></div></div>`:''}
+      <div class="metrics-grid" style="margin-top:12px">
+        <div><div class="field-label" style="color:var(--purple)">Impressions</div><input value="${v.metrics.impressions||''}" placeholder="—" oninput="um('${v.id}','impressions',this.value)" style="color:var(--purple);font-weight:700"/></div>
+        <div><div class="field-label" style="color:${cc}">CTR (%)</div><input value="${v.metrics.ctr||''}" placeholder="—" oninput="um('${v.id}','ctr',this.value)" style="color:${cc};font-weight:700"/></div>
+        <div><div class="field-label">Views 24h</div><input value="${v.metrics.views_24h||''}" placeholder="—" oninput="um('${v.id}','views_24h',this.value)" style="color:var(--green);font-weight:600"/></div>
+        <div><div class="field-label">Views 7d</div><input value="${v.metrics.views_7d||''}" placeholder="—" oninput="um('${v.id}','views_7d',this.value)" style="color:var(--green);font-weight:600"/></div>
+        <div><div class="field-label">Avg Duration</div><input value="${v.metrics.avd||''}" placeholder="—" oninput="um('${v.id}','avd',this.value)" style="color:var(--blue);font-weight:600"/></div>
+        <div><div class="field-label">Revenue ($)</div><input value="${v.metrics.revenue||''}" placeholder="—" oninput="um('${v.id}','revenue',this.value)" style="color:var(--green);font-weight:600"/></div>
       </div>
     </div>`;
   }).join('');
 }
 
-// ── UTILS ─────────────────────────────────────────────────────────────────
-function escH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function escA(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+// ═══ UTILS ════════════════════════════════════════════════════════════
+function eH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function eA(s){return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
 
-// ── INIT ──────────────────────────────────────────────────────────────────
-renderDashboard();
+// ═══ INIT ══════════════════════════════════════════════════════════════
+renderDash();
 </script>
 </body>
 </html>
